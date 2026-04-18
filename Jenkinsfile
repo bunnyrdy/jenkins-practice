@@ -1,5 +1,10 @@
 pipeline{
     agent { label 'AGENT-1'}
+    environment {
+        PROJECT = 'EXPENSE'
+        COMPONENT = 'BACKEND'
+        DEPLOY_TO = 'TEST'
+    }
     stages{
         stage('Build'){
             steps{
