@@ -7,7 +7,10 @@ pipeline{
     }
     options {
         disableConcurrentBuilds()
-        timeout(time: 5, unit:'SECONDS')
+        timeout(time: 30, unit:'MINUTES')
+    }
+    parameters {
+        string(name: 'STATEMENT', defaultValue: 'hello; ls /', description: 'What should I say?')
     }
     stages{
         stage('Build'){
@@ -17,7 +20,6 @@ pipeline{
                 echo "hello,this is build"
                 echo "project: $PROJECT"
                 sleep 15
-
                 """
                 }
             }
@@ -27,6 +29,7 @@ pipeline{
                 script{
                 sh """
                 echo "hello,this is Test"
+                echo "${STATEMENT}"
                 """
                 }
             }
