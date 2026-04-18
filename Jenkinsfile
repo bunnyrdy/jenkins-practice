@@ -53,12 +53,39 @@ pipeline {
                 }
             }
         }
+         stage('Parallel Stages') {
+            parallel {
+                stage('STAGE-1') {
+                    
+                    steps {
+                        script{
+                            sh """
+                                echo "Hello, this is STAGE-1"
+                                sleep 15
+                            """
+                        }
+                    }
+                }
+                stage('STAGE-2') {
+                    
+                    steps {
+                        script{
+                            sh """
+                                echo "Hello, this is STAGE-2"
+                                sleep 15
+                            """
+                        }
+                    }
+                }
+            }
         
+        }
     }
 
     post {
             always {
-                echo 'i will run if it is success or fail'
+                echo 'i will run if it is success or fail'\
+                deleteDir()
             }
             failure {
                 echo 'i will run when pipeline fails'
