@@ -28,6 +28,17 @@ pipeline{
                 }
             }
         }
+        post {
+            always {
+                echo 'i will run if it is success or fail'
+            }
+            failure {
+                echo 'i will run when pipeline fails'
+            }
+            success {
+                echo 'i will run when pipe success'
+            }
+        }
         
 
     }
