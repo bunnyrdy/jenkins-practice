@@ -19,7 +19,7 @@ pipeline{
                 sh """
                 echo "hello,this is build"
                 echo "project: $PROJECT"
-                sleep 15
+                echo "${params.Greeting} World!"
                 """
                 }
             }
@@ -29,7 +29,6 @@ pipeline{
                 script{
                 sh """
                 echo "hello,this is Test"
-                echo "${STATEMENT}"
                 """
                 }
             }
