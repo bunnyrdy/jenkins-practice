@@ -23,7 +23,7 @@ pipeline{
             steps{
                 script{
                 sh """
-                echo "hello,this is deploy"
+                echo "hello,this is deploy
                 """
                 }
             }
@@ -39,7 +39,7 @@ pipeline{
                 echo 'i will run when pipeline fails'
             }
             success {
-                echo 'i will run when pipe success'
+                echo 'i will run when pipeline success'
             }
         }
 
