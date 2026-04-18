@@ -84,7 +84,7 @@ pipeline {
 
     post {
             always {
-                echo 'i will run if it is success or fail'\
+                echo 'i will run if it is success or fail'
                 deleteDir()
             }
             failure {
