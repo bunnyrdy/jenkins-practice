@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     agent { label 'AGENT-1'}
     environment {
         PROJECT = 'EXPENSE'
@@ -19,7 +19,7 @@ pipeline{
                 sh """
                 echo "hello,this is build"
                 echo "project: $PROJECT"
-                echo "${params.Greeting} World!"
+                echo "${params.STATEMENT} World!"
                 """
                 }
             }
@@ -34,6 +34,13 @@ pipeline{
             }
         }
          stage('Deploy'){
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
             steps{
                 script{
                 sh """
@@ -56,5 +63,6 @@ pipeline{
                 echo 'i will run when pipeline success'
             }
         }
-
+    }
 }
+
