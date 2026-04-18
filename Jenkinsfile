@@ -5,12 +5,19 @@ pipeline{
         COMPONENT = 'BACKEND'
         DEPLOY_TO = 'TEST'
     }
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 5, unit:'SECONDS')
+    }
     stages{
         stage('Build'){
             steps{
                 script{
                 sh """
                 echo "hello,this is build"
+                echo "project: $PROJECT"
+                sleep 15
+
                 """
                 }
             }
