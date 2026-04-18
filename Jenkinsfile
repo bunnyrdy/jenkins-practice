@@ -28,7 +28,10 @@ pipeline{
                 }
             }
         }
-        post {
+        
+    }
+
+    post {
             always {
                 echo 'i will run if it is success or fail'
             }
@@ -39,8 +42,5 @@ pipeline{
                 echo 'i will run when pipe success'
             }
         }
-        
-
-    }
 
 }
